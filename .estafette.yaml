@@ -31,10 +31,8 @@ stages:
     - protoc --go_out=./golang *.proto
 
   breaking-changes-check:
-    image: golang:1.13.1-alpine3.10
+    image: uber/prototool:1.8.1
     commands:
-    - curl -sSL https://github.com/uber/prototool/releases/download/v1.8.0/prototool-$(uname -s)-$(uname -m) -o /usr/local/bin/prototool
-    - chmod +x /usr/local/bin/prototool
     - prototool break check . --git-branch master
     when:
       status == 'succeeded' &&
