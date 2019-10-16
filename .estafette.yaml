@@ -19,10 +19,10 @@ stages:
   breaking-changes-check:
     image: uber/prototool:1.8.1
     commands:
+    - git checkout master
+    - git checkout ${ESTAFETTE_GIT_REVISION}
     - git branch -a
-    - git fetch origin
-    - git branch -a
-    - prototool break check . --git-branch origin/master
+    - prototool break check --debug . --git-branch master
     when:
       status == 'succeeded' &&
       branch != 'master'
