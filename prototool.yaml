@@ -28,7 +28,6 @@ generate:
     import_path: github.com/estafette/estafette/ci-contracts-proto
   plugins:
   - name: go
-    type: go
     flags: plugins=grpc
     output: ./generated/golang
   - name: java
