@@ -29,7 +29,7 @@ stages:
   prototool-break-check:
     image: uber/prototool:1.8.1
     commands:
-    - git branch --track master origin/master
+    - git branch --track master origin/master || true
     - prototool break check --git-branch master
 
   clone-golang:
