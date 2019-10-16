@@ -1,5 +1,5 @@
 syntax = "proto3";
-package contracts;
+package contracts.v1;
 
 import "label.proto";
 
@@ -13,4 +13,14 @@ message Build {
 	string build_version = 7;
 	string build_status = 8;
 	repeated Label labels = 9;
+
+    enum Corpus {
+        UNIVERSAL = 0;
+        WEB = 1;
+        IMAGES = 2;
+        LOCAL = 3;
+        NEWS = 4;
+        PRODUCTS = 5;
+        VIDEO = 6;
+    }
 }
