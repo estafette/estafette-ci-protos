@@ -13,6 +13,7 @@ version:
 
 stages:
   git-clone:
+    image: extensions/git-clone:dev
     shallow: false
 
   clone-golang:
