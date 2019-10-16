@@ -52,8 +52,9 @@ stages:
     - prototool generate
 
   git-push-and-tag-golang:
-    image: uber/prototool:1.8.1
+    image: golang:1.13.1-alpine3.10
     commands:
+    - apk add git
     - cd generated/golang
     - go mod tidy
     - go test ./...
