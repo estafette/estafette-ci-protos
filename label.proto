@@ -1,5 +1,5 @@
 syntax = "proto3";
-package contracts;
+package contracts.v1;
 
 message Label {
     string key = 1;

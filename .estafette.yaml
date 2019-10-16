@@ -16,41 +16,66 @@ stages:
     image: extensions/git-clone:dev
     shallow: false
 
-  breaking-changes-check:
+  prototool-lint:
+    image: uber/prototool:1.8.1
+    commands:
+    - prototool lint
+
+  prototool-compile:
+    image: uber/prototool:1.8.1
+    commands:
+    - prototool compile
+
+  prototool-break-check:
     image: uber/prototool:1.8.1
     commands:
     - git branch --track master origin/master
-    - prototool break check . --git-branch master
-    when:
-      status == 'succeeded' &&
-      branch != 'master'
+    - prototool break check --git-branch master
 
   clone-golang:
     image: extensions/git-clone:dev
     repo: estafette-ci-contracts-golang
     branch: master
-    subdir: golang
+    subdir: generated/golang
 
-  build:
-    image: golang:1.13.1-alpine3.10
+  clone-java:
+    image: extensions/git-clone:dev
+    repo: estafette-ci-contracts-java
+    branch: master
+    subdir: generated/java
+
+  prototool-generate:
+    image: uber/prototool:1.8.1
     commands:
-    - apk add git protobuf
-    - go get -v -u github.com/golang/protobuf/protoc-gen-go
-    - rm -rf golang/*.go
-    - protoc --go_out=./golang *.proto
+    - rm -rf generated/golang/**/*.go || true
+    - rm -rf generated/java/**/*.java || true
+    - prototool generate
 
   git-push-and-tag-golang:
-    image: golang:1.13.1-alpine3.10
+    image: uber/prototool:1.8.1
     commands:
-    - apk add git
-    - LOG_MESSAGE=$(git log --format=%B -n 1)
     - cd golang
     - go mod tidy
     - go test ./...
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
     - git add --all
-    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION} - ${LOG_MESSAGE}"
+    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
+    - git push origin master
+    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git push origin v${ESTAFETTE_BUILD_VERSION}
+    when:
+      status == 'succeeded' &&
+      branch == 'master'
+
+  git-push-and-tag-java:
+    image: uber/prototool:1.8.1
+    commands:
+    - cd java
+    - git config --global user.email "bot@estafette.io"
+    - git config --global user.name "Estafette bot"
+    - git add --all
+    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
     - git push origin v${ESTAFETTE_BUILD_VERSION}
