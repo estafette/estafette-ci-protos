@@ -3,4 +3,5 @@ package contracts;
 
 message Label {
     string key = 1;
+    string value = 2;
 }
