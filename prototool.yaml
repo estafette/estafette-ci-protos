@@ -34,3 +34,5 @@ generate:
     output: ./generated/java
   - name: csharp
     output: ./generated/dotnet
+  - name: python
+    output: ./generated/python
