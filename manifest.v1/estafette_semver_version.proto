@@ -1,5 +1,6 @@
 syntax = "proto3";
 package manifest.v1;
+option go_package = "manifest_v1";
 
 import "manifest.v1/string_or_string_array.proto";
 
