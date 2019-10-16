@@ -25,7 +25,8 @@ stages:
   build:
     image: golang:1.13.1-alpine3.10
     commands:
-    - rm -rf golang/*
+    - rm -rf golang/*.go
+    - apk add git
     - go get -u github.com/golang/protobuf/protoc-gen-go
     - protoc --go_out=./golang *.proto
 
