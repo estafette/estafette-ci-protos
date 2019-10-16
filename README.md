@@ -34,3 +34,4 @@ Once a PR is merged to the `master` branch files for the following languages wil
 | Java     | github.com/estafette/estafette-ci-contracts-java   |
 | CSharp   | github.com/estafette/estafette-ci-contracts-dotnet |
 | Python   | github.com/estafette/estafette-ci-contracts-python |
+| C++      | github.com/estafette/estafette-ci-contracts-cpp    |

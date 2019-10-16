@@ -36,3 +36,5 @@ generate:
     output: ./generated/dotnet
   - name: python
     output: ./generated/python
+  - name: cpp
+    output: ./generated/cpp
