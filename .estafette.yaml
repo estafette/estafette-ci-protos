@@ -19,6 +19,7 @@ stages:
   breaking-changes-check:
     image: uber/prototool:1.8.1
     commands:
+    - git fetch origin
     - prototool break check . --git-branch origin/master
     when:
       status == 'succeeded' &&
