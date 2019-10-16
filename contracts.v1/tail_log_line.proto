@@ -1,0 +1,16 @@
+syntax = "proto3";
+package contracts.v1;
+
+import "google/protobuf/duration.proto";
+import "contracts.v1/build_log_line.proto";
+import "contracts.v1/build_log_step_docker_image.proto";
+
+message TailLogLine {
+	string step = 1;
+	BuildLogLine log_line = 2;
+	BuildLogStepDockerImage image = 3;
+	google.protobuf.Duration duration = 4;
+	int64 exit_code = 5;
+	string status = 6;
+	bool auto_injected = 7;
+}

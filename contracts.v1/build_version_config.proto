@@ -1,0 +1,11 @@
+syntax = "proto3";
+package contracts.v1;
+
+message BuildVersionConfig {
+	string version = 1;
+	int64 major = 2;
+	int64 minor = 3;
+	string patch = 4;
+	string label = 5;
+	int64 auto_increment = 6;
+}

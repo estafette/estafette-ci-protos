@@ -1,0 +1,20 @@
+syntax = "proto3";
+package contracts.v1;
+
+import "manifest.v1/estafette_event.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+message Release {
+	string name = 1;
+	string action = 2;
+	string id = 3;
+	string repo_source = 4;
+	string repo_owner = 5;
+	string release_version = 6;
+	string release_status = 7;
+	repeated manifest.v1.EstafetteEvent events = 8;
+	google.protobuf.Timestamp inserted_at = 9;
+	google.protobuf.Timestamp updated_at = 10;
+	google.protobuf.Duration duration = 11;
+}

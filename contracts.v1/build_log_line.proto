@@ -1,0 +1,11 @@
+syntax = "proto3";
+package contracts.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message BuildLogLine {
+	int64 line_number = 1;
+	google.protobuf.Timestamp timestamp = 2;
+	string stream_type = 3;
+	string text = 4;
+}

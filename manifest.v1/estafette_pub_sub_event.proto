@@ -1,0 +1,7 @@
+syntax = "proto3";
+package manifest.v1;
+
+message EstafettePubSubEvent {
+	string project = 1;
+	string topic = 2;
+}

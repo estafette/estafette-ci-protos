@@ -1,0 +1,8 @@
+syntax = "proto3";
+package manifest.v1;
+
+message EstafetteTriggerReleaseAction {
+	string target = 1;
+	string action = 2;
+	string version = 3;
+}

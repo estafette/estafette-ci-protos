@@ -1,0 +1,15 @@
+syntax = "proto3";
+package contracts.v1;
+
+import "contracts.v1/build_log_step.proto";
+import "google/protobuf/timestamp.proto";
+
+message ReleaseLog {
+	string id = 1;
+	string repo_source = 2;
+	string repo_owner = 3;
+	string repo_name = 4;
+	string release_id = 5;
+	repeated BuildLogStep steps = 6;
+	google.protobuf.Timestamp inserted_at = 7;
+}
