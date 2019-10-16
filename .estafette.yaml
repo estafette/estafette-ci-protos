@@ -64,6 +64,7 @@ stages:
 
   prototool-generate:
     image: uber/prototool:1.8.1
+    shell: /bin/bash
     commands:
     - shopt -s globstar
     - rm -rf generated/**/*.go || true
