@@ -36,7 +36,7 @@ stages:
     image: extensions/git-clone:dev
     repo: estafette-ci-contracts-golang
     branch: master
-    subdir: generated/golang
+    subdir: generated/golang/github.com/estafette/estafette-ci-contracts-golang
 
   clone-java:
     image: extensions/git-clone:dev
@@ -77,7 +77,7 @@ stages:
     image: golang:1.13.1-alpine3.10
     commands:
     - apk add git
-    - cd generated/golang
+    - cd generated/golang/github.com/estafette/estafette-ci-contracts-golang
     - go mod tidy
     - go test ./...
     - git config --global user.email "bot@estafette.io"

@@ -1,6 +1,6 @@
 syntax = "proto3";
 package contracts.v1;
-option go_package = "contracts_v1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
 
 message Warning {
 	string status = 1;

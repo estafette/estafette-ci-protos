@@ -1,6 +1,6 @@
 syntax = "proto3";
 package manifest.v1;
-option go_package = "manifest_v1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
 
 message EstafetteReleaseAction {
 	string name = 1;
