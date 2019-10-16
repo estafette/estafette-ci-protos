@@ -66,7 +66,7 @@ stages:
     image: uber/prototool:1.8.1
     shell: /bin/bash
     commands:
-    - shopt -s globstar
+    - shopt globstar
     - rm -rf generated/**/*.go || true
     - rm -rf generated/**/*.java || true
     - rm -rf generated/**/*.cs || true
