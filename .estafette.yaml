@@ -1,0 +1,54 @@
+builder:
+  track: dev
+
+labels:
+  app-group: estafette-ci
+  team: estafette-team
+  language: proto
+
+version:
+  semver:
+    major: 0
+    minor: 0
+
+stages:
+  git-clone:
+    shallow: false
+
+  clone-golang:
+    image: extensions/git-clone:dev
+    repo: estafette-ci-contracts-golang
+    branch: master
+    subdir: golang
+
+  build:
+    image: golang:1.13.1-alpine3.10
+    commands:
+    - rm -rf golang/*
+    - go get -u github.com/golang/protobuf/protoc-gen-go
+    - protoc --go_out=./golang *.proto
+
+  git-push-and-tag-golang:
+    image: golang:1.13.1-alpine3.10
+    commands:
+    - go test ./...
+    - apk add git
+    - git config --global user.email "bot@estafette.io"
+    - git config --global user.name "Estafette bot"
+    - LOG_MESSAGE=$(git log --format=%B -n 1)
+    - cd golang && git add --all && git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION} - ${LOG_MESSAGE}"
+    - git push origin master
+    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git push origin v${ESTAFETTE_BUILD_VERSION}
+    when:
+      status == 'succeeded' &&
+      branch == 'master'
+
+  slack-notify:
+    image: extensions/slack-build-status:dev
+    workspace: estafette
+    channels:
+    - '#build-status'
+    when:
+      status == 'succeeded' ||
+      status == 'failed'
