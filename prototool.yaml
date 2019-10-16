@@ -33,7 +33,7 @@ generate:
   - name: java
     output: ./generated/java
   - name: csharp
-    output: ./generated/dotnet
+    output: ./generated/csharp
   - name: python
     output: ./generated/python
   - name: cpp
