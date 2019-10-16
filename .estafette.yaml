@@ -33,12 +33,15 @@ stages:
   git-push-and-tag-golang:
     image: golang:1.13.1-alpine3.10
     commands:
+    - cd golang
+    - go mod tidy
     - go test ./...
     - apk add git
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
     - LOG_MESSAGE=$(git log --format=%B -n 1)
-    - cd golang && git add --all && git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION} - ${LOG_MESSAGE}"
+    - git add --all
+    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION} - ${LOG_MESSAGE}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
     - git push origin v${ESTAFETTE_BUILD_VERSION}
