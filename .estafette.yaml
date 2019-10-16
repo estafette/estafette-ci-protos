@@ -44,11 +44,18 @@ stages:
     branch: master
     subdir: generated/java
 
+  clone-dotnet:
+    image: extensions/git-clone:dev
+    repo: estafette-ci-contracts-dotnet
+    branch: master
+    subdir: generated/dotnet
+
   prototool-generate:
     image: uber/prototool:1.8.1
     commands:
     - rm -rf generated/golang/**/*.go || true
     - rm -rf generated/java/**/*.java || true
+    - rm -rf generated/dotnet/**/*.cs || true
     - prototool generate
 
   git-push-and-tag-golang:
@@ -73,6 +80,21 @@ stages:
     image: uber/prototool:1.8.1
     commands:
     - cd generated/java
+    - git config --global user.email "bot@estafette.io"
+    - git config --global user.name "Estafette bot"
+    - git add --all
+    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
+    - git push origin master
+    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git push origin v${ESTAFETTE_BUILD_VERSION}
+    when:
+      status == 'succeeded' &&
+      branch == 'master'
+
+  git-push-and-tag-dotnet:
+    image: uber/prototool:1.8.1
+    commands:
+    - cd generated/dotnet
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
     - git add --all

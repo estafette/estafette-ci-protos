@@ -32,3 +32,5 @@ generate:
     output: ./generated/golang
   - name: java
     output: ./generated/java
+  - name: csharp
+    output: ./generated/dotnet
