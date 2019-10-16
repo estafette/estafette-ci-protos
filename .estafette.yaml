@@ -54,7 +54,7 @@ stages:
   git-push-and-tag-golang:
     image: uber/prototool:1.8.1
     commands:
-    - cd golang
+    - cd generated/golang
     - go mod tidy
     - go test ./...
     - git config --global user.email "bot@estafette.io"
@@ -71,7 +71,7 @@ stages:
   git-push-and-tag-java:
     image: uber/prototool:1.8.1
     commands:
-    - cd java
+    - cd generated/java
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
     - git add --all
