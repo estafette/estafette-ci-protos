@@ -82,7 +82,10 @@ stages:
     - go test ./...
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
+    - ls -latr
+    - git status
     - git add --all
+    - git status
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
