@@ -65,12 +65,12 @@ stages:
   prototool-generate:
     image: uber/prototool:1.8.1
     commands:
-    - rm -rf generated/golang/**/*.go || true
-    - rm -rf generated/java/**/*.java || true
-    - rm -rf generated/csharp/**/*.cs || true
-    - rm -rf generated/python/**/*.py || true
-    - rm -rf generated/cpp/**/*.cc || true
-    - rm -rf generated/cpp/**/*.h || true
+    - rm -rf generated/**/*.go || true
+    - rm -rf generated/**/*.java || true
+    - rm -rf generated/**/*.cs || true
+    - rm -rf generated/**/*.py || true
+    - rm -rf generated/**/*.cc || true
+    - rm -rf generated/**/*.h || true
     - prototool generate
 
   git-push-and-tag-golang:
@@ -82,7 +82,7 @@ stages:
     - go test ./...
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
-    - git add . --all
+    - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
@@ -97,7 +97,7 @@ stages:
     - cd generated/java
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
-    - git add . --all
+    - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
@@ -112,7 +112,7 @@ stages:
     - cd generated/csharp
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
-    - git add . --all
+    - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
@@ -127,7 +127,7 @@ stages:
     - cd generated/python
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
-    - git add . --all
+    - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
@@ -142,7 +142,7 @@ stages:
     - cd generated/cpp
     - git config --global user.email "bot@estafette.io"
     - git config --global user.name "Estafette bot"
-    - git add . --all
+    - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
     - git tag v${ESTAFETTE_BUILD_VERSION}
