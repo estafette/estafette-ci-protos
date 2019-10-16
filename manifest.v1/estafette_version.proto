@@ -1,0 +1,10 @@
+syntax = "proto3";
+package manifest.v1;
+
+import "manifest.v1/estafette_semver_version.proto";
+import "manifest.v1/estafette_custom_version.proto";
+
+message EstafetteVersion {
+	EstafetteSemverVersion semver = 1;
+	EstafetteCustomVersion custom = 2;
+}

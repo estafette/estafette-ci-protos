@@ -1,0 +1,10 @@
+syntax = "proto3";
+package contracts.v1;
+
+message TrustedImageConfig {
+	string image_path = 1;
+	bool run_privileged = 2;
+	bool run_docker = 3;
+	bool allow_commands = 4;
+	repeated string injected_credential_types = 5;
+}

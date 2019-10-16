@@ -1,0 +1,7 @@
+syntax = "proto3";
+package contracts.v1;
+
+message Warning {
+	string status = 1;
+	string message = 2;
+}

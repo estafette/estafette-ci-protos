@@ -1,0 +1,9 @@
+syntax = "proto3";
+package manifest.v1;
+
+message EstafettePipelineTrigger {
+	string event = 1;
+	string status = 2;
+	string name = 3;
+	string branch = 4;
+}

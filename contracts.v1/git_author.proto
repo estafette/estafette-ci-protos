@@ -1,0 +1,8 @@
+syntax = "proto3";
+package contracts.v1;
+
+message GitAuthor {
+	string email = 1;
+	string name = 2;
+	string username = 3;
+}

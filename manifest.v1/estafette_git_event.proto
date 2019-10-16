@@ -1,0 +1,8 @@
+syntax = "proto3";
+package manifest.v1;
+
+message EstafetteGitEvent {
+	string event = 1;
+	string repository = 2;
+	string branch = 3;
+}

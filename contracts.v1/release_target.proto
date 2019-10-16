@@ -1,0 +1,11 @@
+syntax = "proto3";
+package contracts.v1;
+
+import "manifest.v1/estafette_release_action.proto";
+import "contracts.v1/release.proto";
+
+message ReleaseTarget {
+	string name = 1;
+	repeated manifest.v1.EstafetteReleaseAction actions = 2;
+	repeated Release active_releases = 3;
+}
