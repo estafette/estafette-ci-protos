@@ -62,7 +62,19 @@ stages:
     branch: master
     subdir: generated/cpp
 
-  prototool-generate:
+  clone-ruby:
+    image: extensions/git-clone:dev
+    repo: estafette-ci-contracts-ruby
+    branch: master
+    subdir: generated/ruby
+
+  clone-objc:
+    image: extensions/git-clone:dev
+    repo: estafette-ci-contracts-objc
+    branch: master
+    subdir: generated/objc
+
+  remove-previous-generated-files:
     image: uber/prototool:1.8.1
     shell: /bin/bash
     commands:
@@ -73,6 +85,10 @@ stages:
     - rm -rf generated/**/*.py || true
     - rm -rf generated/**/*.cc || true
     - rm -rf generated/**/*.h || true
+
+  prototool-generate:
+    image: uber/prototool:1.8.1
+    commands:
     - prototool generate
 
   git-push-and-tag-golang:
@@ -153,15 +169,45 @@ stages:
       status == 'succeeded' &&
       branch == 'master'
 
-  create-and-push-nuget-package:
-    image: mcr.microsoft.com/dotnet/core/sdk:3.0
-    env:
-      GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
-      GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
+  git-push-and-tag-ruby:
+    image: uber/prototool:1.8.1
     commands:
-    - cd generated/csharp
-    - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
-    - dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/estafette/index.json --api-key ${GH_TOKEN}
+    - cd generated/ruby
+    - git config --global user.email "bot@estafette.io"
+    - git config --global user.name "Estafette bot"
+    - git add --all
+    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
+    - git push origin master
+    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git push origin v${ESTAFETTE_BUILD_VERSION}
+    when:
+      status == 'succeeded' &&
+      branch == 'master'
+
+  git-push-and-tag-objc:
+    image: uber/prototool:1.8.1
+    commands:
+    - cd generated/objc
+    - git config --global user.email "bot@estafette.io"
+    - git config --global user.name "Estafette bot"
+    - git add --all
+    - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
+    - git push origin master
+    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git push origin v${ESTAFETTE_BUILD_VERSION}
+    when:
+      status == 'succeeded' &&
+      branch == 'master'
+
+  # create-and-push-nuget-package:
+  #   image: mcr.microsoft.com/dotnet/core/sdk:3.0
+  #   env:
+  #     GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
+  #     GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
+  #   commands:
+  #   - cd generated/csharp
+  #   - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
+  #   - dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/estafette/index.json --api-key ${GH_TOKEN}
 
   slack-notify:
     image: extensions/slack-build-status:dev

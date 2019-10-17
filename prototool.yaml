@@ -39,3 +39,7 @@ generate:
     output: ./generated/python
   - name: cpp
     output: ./generated/cpp
+  - name: ruby
+    output: ./generated/ruby
+  - name: objc
+    output: ./generated/objc
