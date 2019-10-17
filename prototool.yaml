@@ -35,6 +35,7 @@ generate:
     output: ./generated/java
   - name: csharp
     output: ./generated/csharp
+    flags: base_namespace=Estafette.CI
   - name: python
     output: ./generated/python
   - name: cpp
