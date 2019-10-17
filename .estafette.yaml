@@ -161,7 +161,7 @@ stages:
     commands:
     - cd generated/csharp
     - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
-    - nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/estafette/index.json" -UserName ${GH_USERNAME} -Password ${GH_TOKEN}
+    - dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/estafette/index.json --api-key ${GH_USERNAME}:${GH_TOKEN}
 
   slack-notify:
     image: extensions/slack-build-status:dev
