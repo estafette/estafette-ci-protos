@@ -154,11 +154,12 @@ stages:
       branch == 'master'
 
   create-and-push-nuget-package:
-    image: mcr.microsoft.com/dotnet/core/sdk:3.0
+    image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
     env:
       GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
+    - cd generated/csharp
     - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
     - nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/estafette/index.json" -UserName ${GH_USERNAME} -Password ${GH_TOKEN}
 
