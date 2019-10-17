@@ -4,6 +4,7 @@ option go_package = "github.com/estafette/estafette-ci-contracts-golang/contract
 
 import "contracts.v1/pagination.proto";
 import "google/protobuf/any.proto";
+option csharp_namespace = "Estafette.CI.Contracts.V1";
 
 message ListResponse {
 	repeated google.protobuf.Any items = 1;

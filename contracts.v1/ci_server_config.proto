@@ -1,6 +1,7 @@
 syntax = "proto3";
 package contracts.v1;
 option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
+option csharp_namespace = "Estafette.CI.Contracts.V1";
 
 message CIServerConfig {
 	string base_url = 1;

@@ -1,6 +1,7 @@
 syntax = "proto3";
 package manifest.v1;
 option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
+option csharp_namespace = "Estafette.CI.Manifest.V1";
 
 message EstafettePipelineTrigger {
 	string event = 1;
