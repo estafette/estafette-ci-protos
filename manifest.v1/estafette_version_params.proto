@@ -1,10 +1,12 @@
 syntax = "proto3";
+
 package manifest.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
+
 option csharp_namespace = "Estafette.CI.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
 
 message EstafetteVersionParams {
-	int64 auto_increment = 1;
-	string branch = 2;
-	string revision = 3;
+  int64 auto_increment = 1;
+  string branch = 2;
+  string revision = 3;
 }

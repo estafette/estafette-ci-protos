@@ -1,16 +1,18 @@
 syntax = "proto3";
+
 package contracts.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
+
 option csharp_namespace = "Estafette.CI.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
 
 import "google/protobuf/duration.proto";
 
 message BuildLogStepDockerImage {
-	string name = 1;
-	string tag = 2;
-	bool is_pulled = 3;
-	int64 image_size = 4;
-	google.protobuf.Duration pull_duration = 5;
-	string error = 6;
-	bool is_trusted = 7;
+  string name = 1;
+  string tag = 2;
+  bool is_pulled = 3;
+  int64 image_size = 4;
+  google.protobuf.Duration pull_duration = 5;
+  string error = 6;
+  bool is_trusted = 7;
 }

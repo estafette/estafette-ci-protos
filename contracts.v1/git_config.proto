@@ -1,12 +1,14 @@
 syntax = "proto3";
+
 package contracts.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
+
 option csharp_namespace = "Estafette.CI.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
 
 message GitConfig {
-	string repo_source = 1;
-	string repo_owner = 2;
-	string repo_name = 3;
-	string repo_branch = 4;
-	string repo_revision = 5;
+  string repo_source = 1;
+  string repo_owner = 2;
+  string repo_name = 3;
+  string repo_branch = 4;
+  string repo_revision = 5;
 }

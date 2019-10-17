@@ -1,19 +1,21 @@
 syntax = "proto3";
+
 package manifest.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
+
 option csharp_namespace = "Estafette.CI.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
 
 import "google/protobuf/any.proto";
 
 message EstafetteStage {
-	string name = 1;
-	string container_image = 2;
-	string shell = 3;
-	string working_directory = 4;
-	repeated string commands = 5;
-	string when = 6;
-	map<string, string> env_vars = 7;
-	bool auto_injected = 8;
-	int64 retries = 9;
-	map<string, google.protobuf.Any> custom_properties = 10;
+  string name = 1;
+  string container_image = 2;
+  string shell = 3;
+  string working_directory = 4;
+  repeated string commands = 5;
+  string when = 6;
+  map<string, string> env_vars = 7;
+  bool auto_injected = 8;
+  int64 retries = 9;
+  map<string, google.protobuf.Any> custom_properties = 10;
 }

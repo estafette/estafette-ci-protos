@@ -1,14 +1,16 @@
 syntax = "proto3";
+
 package manifest.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
+
 option csharp_namespace = "Estafette.CI.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/manifest_v1";
 
 message EstafetteReleaseEvent {
-	string release_version = 1;
-	string repo_source = 2;
-	string repo_owner = 3;
-	string repo_name = 4;
-	string target = 5;
-	string status = 6;
-	string event = 7;
+  string release_version = 1;
+  string repo_source = 2;
+  string repo_owner = 3;
+  string repo_name = 4;
+  string target = 5;
+  string status = 6;
+  string event = 7;
 }

@@ -1,34 +1,36 @@
 syntax = "proto3";
-package contracts.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
-option csharp_namespace = "Estafette.CI.Contracts.V1";
 
+package contracts.v1;
+
+option csharp_namespace = "Estafette.CI.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
+
+import "contracts.v1/git_commit.proto";
 import "contracts.v1/label.proto";
 import "contracts.v1/release_target.proto";
-import "contracts.v1/git_commit.proto";
-import "manifest.v1/estafette_trigger.proto";
-import "manifest.v1/estafette_event.proto";
-import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "manifest.v1/estafette_event.proto";
+import "manifest.v1/estafette_trigger.proto";
 
 message Pipeline {
-	string id = 1;
-	string repo_source = 2;
-	string repo_owner = 3;
-	string repo_name = 4;
-	string repo_branch = 5;
-	string repo_revision = 6;
-	string build_version = 7;
-	string build_status = 8;
-	repeated Label labels = 9;
-	repeated ReleaseTarget release_targets = 10;
-	string manifest = 11;
-	string manifest_with_defaults = 12;
-	repeated GitCommit  commits = 13;
-	repeated manifest.v1.EstafetteTrigger triggers = 14;
-	repeated manifest.v1.EstafetteEvent events = 15;
-	google.protobuf.Timestamp inserted_at = 16;
-	google.protobuf.Timestamp updated_at = 17;
-	google.protobuf.Duration duration = 18;
-	google.protobuf.Timestamp last_updated_at = 19;
+  string id = 1;
+  string repo_source = 2;
+  string repo_owner = 3;
+  string repo_name = 4;
+  string repo_branch = 5;
+  string repo_revision = 6;
+  string build_version = 7;
+  string build_status = 8;
+  repeated Label labels = 9;
+  repeated ReleaseTarget release_targets = 10;
+  string manifest = 11;
+  string manifest_with_defaults = 12;
+  repeated GitCommit commits = 13;
+  repeated manifest.v1.EstafetteTrigger triggers = 14;
+  repeated manifest.v1.EstafetteEvent events = 15;
+  google.protobuf.Timestamp inserted_at = 16;
+  google.protobuf.Timestamp updated_at = 17;
+  google.protobuf.Duration duration = 18;
+  google.protobuf.Timestamp last_updated_at = 19;
 }

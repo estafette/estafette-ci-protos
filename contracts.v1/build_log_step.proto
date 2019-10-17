@@ -1,19 +1,21 @@
 syntax = "proto3";
-package contracts.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
-option csharp_namespace = "Estafette.CI.Contracts.V1";
 
-import "contracts.v1/build_log_step_docker_image.proto";
+package contracts.v1;
+
+option csharp_namespace = "Estafette.CI.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
+
 import "contracts.v1/build_log_line.proto";
+import "contracts.v1/build_log_step_docker_image.proto";
 import "google/protobuf/duration.proto";
 
 message BuildLogStep {
-	string step = 1;
-	BuildLogStepDockerImage image = 2;
-	int64 run_index = 3;
-	google.protobuf.Duration duration = 4;
-	repeated BuildLogLine log_lines = 5;
-	int64 exit_code = 6;
-	string status = 7;
-	bool auto_injected = 8;
+  string step = 1;
+  BuildLogStepDockerImage image = 2;
+  int64 run_index = 3;
+  google.protobuf.Duration duration = 4;
+  repeated BuildLogLine log_lines = 5;
+  int64 exit_code = 6;
+  string status = 7;
+  bool auto_injected = 8;
 }

@@ -1,12 +1,14 @@
 syntax = "proto3";
+
 package contracts.v1;
+
+option csharp_namespace = "Estafette.CI.Contracts.V1";
 option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
 
 import "contracts.v1/pagination.proto";
 import "google/protobuf/any.proto";
-option csharp_namespace = "Estafette.CI.Contracts.V1";
 
 message ListResponse {
-	repeated google.protobuf.Any items = 1;
-	Pagination pagination = 2;
+  repeated google.protobuf.Any items = 1;
+  Pagination pagination = 2;
 }

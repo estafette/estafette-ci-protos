@@ -1,22 +1,24 @@
 syntax = "proto3";
-package contracts.v1;
-option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
-option csharp_namespace = "Estafette.CI.Contracts.V1";
 
-import "manifest.v1/estafette_event.proto";
-import "google/protobuf/timestamp.proto";
+package contracts.v1;
+
+option csharp_namespace = "Estafette.CI.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-contracts-golang/contracts_v1";
+
 import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "manifest.v1/estafette_event.proto";
 
 message Release {
-	string name = 1;
-	string action = 2;
-	string id = 3;
-	string repo_source = 4;
-	string repo_owner = 5;
-	string release_version = 6;
-	string release_status = 7;
-	repeated manifest.v1.EstafetteEvent events = 8;
-	google.protobuf.Timestamp inserted_at = 9;
-	google.protobuf.Timestamp updated_at = 10;
-	google.protobuf.Duration duration = 11;
+  string name = 1;
+  string action = 2;
+  string id = 3;
+  string repo_source = 4;
+  string repo_owner = 5;
+  string release_version = 6;
+  string release_status = 7;
+  repeated manifest.v1.EstafetteEvent events = 8;
+  google.protobuf.Timestamp inserted_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  google.protobuf.Duration duration = 11;
 }
