@@ -204,12 +204,13 @@ stages:
   create-and-push-maven-package:
     image: maven:3.6.2-jdk-11-slim
     env:
+      GH_USERNAME: estafette.secret(bh3seruHe6AVoqkx.lqvsI6Bv5Xa539D4_ZCL5xB3l9VC5U-JcO7HwpuP)
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
-    - cat ~/.m2/settings.xml
+    - echo "<settings><servers><server><id>github</id><username>${GH_USERNAME}</username><password>${GH_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
     - cd generated/java
     - mvn -B versions:set -DnewVersion=${ESTAFETTE_BUILD_VERSION}
-    - mvn -B deploy -DaltDeploymentRepository=repository::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java -Dtoken=${GH_TOKEN}
+    - mvn -B deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java
 
   # create-and-push-nuget-package:
   #   image: mcr.microsoft.com/dotnet/core/sdk:3.0
