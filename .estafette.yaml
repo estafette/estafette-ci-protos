@@ -208,7 +208,7 @@ stages:
     commands:
     - cd generated/java
     - mvn -B versions:set -DnewVersion=${ESTAFETTE_BUILD_VERSION}
-    - mvn -B deploy -Dregistry=https://maven.pkg.github.com/estafette -Dtoken=${GH_TOKEN}
+    - mvn -B deploy -DaltDeploymentRepository=repository::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java -Dtoken=${GH_TOKEN}
 
   # create-and-push-nuget-package:
   #   image: mcr.microsoft.com/dotnet/core/sdk:3.0
