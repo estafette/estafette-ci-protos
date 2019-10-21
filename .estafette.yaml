@@ -206,6 +206,7 @@ stages:
     env:
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
+    - cat ~/.m2/settings.xml
     - cd generated/java
     - mvn -B versions:set -DnewVersion=${ESTAFETTE_BUILD_VERSION}
     - mvn -B deploy -DaltDeploymentRepository=repository::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java -Dtoken=${GH_TOKEN}
