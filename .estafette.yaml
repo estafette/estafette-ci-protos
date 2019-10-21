@@ -213,15 +213,17 @@ stages:
     - mvn -B versions:set -DnewVersion=${ESTAFETTE_BUILD_VERSION}
     - mvn -B deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java
 
-  # create-and-push-nuget-package:
-  #   image: mcr.microsoft.com/dotnet/core/sdk:3.0
-  #   env:
-  #     GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
-  #     GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
-  #   commands:
-  #   - cd generated/csharp
-  #   - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
-  #   - dotnet nuget push **/*.nupkg --source https://nuget.pkg.github.com/estafette/index.json --api-key ${GH_TOKEN}
+  create-and-push-nuget-package:
+    image: mcr.microsoft.com/dotnet/core/sdk:3.0
+    env:
+      GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
+      GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
+    commands:
+    - apt-get install nuget
+    - cd generated/csharp
+    - nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/estafette/estafette-ci-contracts-csharp/index.json" -UserName ${GH_USERNAME} -Password ${GH_TOKEN}
+    - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
+    - nuget push **/*.nupkg --source "GitHub"
 
   slack-notify:
     image: extensions/slack-build-status:dev
