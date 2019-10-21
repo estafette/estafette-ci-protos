@@ -35,7 +35,7 @@ generate:
   - name: java
     output: ./generated/java/src
   - name: csharp
-    output: ./generated/csharp
+    output: ./generated/csharp/src
     flags: base_namespace=Estafette.CI
   - name: python
     output: ./generated/python
