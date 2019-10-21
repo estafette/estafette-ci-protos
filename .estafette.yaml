@@ -207,7 +207,8 @@ stages:
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
     - cd generated/java
-    - mvn deploy -Dregistry=https://maven.pkg.github.com/estafette -Dtoken=${GH_TOKEN}
+    - mvn -B versions:set -DnewVersion=${ESTAFETTE_BUILD_VERSION}
+    - mvn -B deploy -Dregistry=https://maven.pkg.github.com/estafette -Dtoken=${GH_TOKEN}
 
   # create-and-push-nuget-package:
   #   image: mcr.microsoft.com/dotnet/core/sdk:3.0
