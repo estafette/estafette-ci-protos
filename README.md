@@ -27,10 +27,12 @@ prototool generate
 
 Once a PR is merged to the `master` branch files for the following languages will be generated and tagged with the same version as this build.
 
-| Language | Repository                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------------- |
-| Golang   | [github.com/estafette/estafette-ci-contracts-golang](https://github.com/estafette/estafette-ci-contracts-golang) |
-| Java     | [github.com/estafette/estafette-ci-contracts-java](https://github.com/estafette/estafette-ci-contracts-java)     |
-| CSharp   | [github.com/estafette/estafette-ci-contracts-csharp](https://github.com/estafette/estafette-ci-contracts-csharp) |
-| Python   | [github.com/estafette/estafette-ci-contracts-python](https://github.com/estafette/estafette-ci-contracts-python) |
-| C++      | [github.com/estafette/estafette-ci-contracts-cpp](https://github.com/estafette/estafette-ci-contracts-cpp)       |
+| Language    | Repository                                                                                                       |
+| ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| Golang      | [github.com/estafette/estafette-ci-contracts-golang](https://github.com/estafette/estafette-ci-contracts-golang) |
+| Java        | [github.com/estafette/estafette-ci-contracts-java](https://github.com/estafette/estafette-ci-contracts-java)     |
+| CSharp      | [github.com/estafette/estafette-ci-contracts-csharp](https://github.com/estafette/estafette-ci-contracts-csharp) |
+| Python      | [github.com/estafette/estafette-ci-contracts-python](https://github.com/estafette/estafette-ci-contracts-python) |
+| C++         | [github.com/estafette/estafette-ci-contracts-cpp](https://github.com/estafette/estafette-ci-contracts-cpp)       |
+| Ruby        | [github.com/estafette/estafette-ci-contracts-ruby](https://github.com/estafette/estafette-ci-contracts-ruby)     |
+| Objective-C | [github.com/estafette/estafette-ci-contracts-objc](https://github.com/estafette/estafette-ci-contracts-objc)     |
