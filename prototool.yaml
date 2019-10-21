@@ -19,6 +19,7 @@ lint:
     - FILE_OPTIONS_JAVA_PACKAGE_SAME_IN_DIR
     - FILE_OPTIONS_REQUIRE_CSHARP_NAMESPACE
     - FILE_OPTIONS_REQUIRE_GO_PACKAGE
+    - FILE_OPTIONS_REQUIRE_JAVA_PACKAGE
     - MESSAGE_FIELD_NAMES_LOWER_SNAKE_CASE
     - MESSAGE_NAMES_CAMEL_CASE
     - MESSAGE_NAMES_CAPITALIZED
@@ -32,7 +33,7 @@ generate:
     flags: plugins=grpc
     output: ./generated/golang
   - name: java
-    output: ./generated/java
+    output: ./generated/java/src
   - name: csharp
     output: ./generated/csharp
     flags: base_namespace=Estafette.CI

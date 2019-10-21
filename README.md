@@ -23,6 +23,14 @@ prototool break check --git-branch master
 prototool generate
 ```
 
+## Before committing changes
+
+To make sure formatting follows convention run the following command before creating and pushing a commit:
+
+```bash
+prototool format -w
+```
+
 ## Automatically generated stubs
 
 Once a PR is merged to the `master` branch files for the following languages will be generated and tagged with the same version as this build.
