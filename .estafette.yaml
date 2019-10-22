@@ -32,47 +32,49 @@ stages:
     - git branch --track master origin/master || true
     - prototool break check --git-branch master
 
-  clone-golang:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-golang
-    branch: master
-    subdir: generated/golang/github.com/estafette/estafette-ci-contracts-golang
+  clone-language-repos:
+    parallelStages:
+      clone-golang:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-golang
+        branch: master
+        subdir: generated/golang/github.com/estafette/estafette-ci-contracts-golang
 
-  clone-java:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-java
-    branch: master
-    subdir: generated/java
+      clone-java:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-java
+        branch: master
+        subdir: generated/java
 
-  clone-csharp:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-csharp
-    branch: master
-    subdir: generated/csharp
+      clone-csharp:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-csharp
+        branch: master
+        subdir: generated/csharp
 
-  clone-python:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-python
-    branch: master
-    subdir: generated/python
+      clone-python:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-python
+        branch: master
+        subdir: generated/python
 
-  clone-cpp:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-cpp
-    branch: master
-    subdir: generated/cpp
+      clone-cpp:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-cpp
+        branch: master
+        subdir: generated/cpp
 
-  clone-ruby:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-ruby
-    branch: master
-    subdir: generated/ruby
+      clone-ruby:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-ruby
+        branch: master
+        subdir: generated/ruby
 
-  clone-objc:
-    image: extensions/git-clone:dev
-    repo: estafette-ci-contracts-objc
-    branch: master
-    subdir: generated/objc
+      clone-objc:
+        image: extensions/git-clone:dev
+        repo: estafette-ci-contracts-objc
+        branch: master
+        subdir: generated/objc
 
   remove-previous-generated-files:
     image: uber/prototool:1.8.1
