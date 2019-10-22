@@ -216,11 +216,11 @@ stages:
   create-and-push-nuget-package:
     image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
     env:
-      GH_USERNAME: estafette.secret(bh3seruHe6AVoqkx.lqvsI6Bv5Xa539D4_ZCL5xB3l9VC5U-JcO7HwpuP)
+      GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
     - cd generated/csharp
-    - echo "<?xml version=\"1.0\" encoding=\"utf-8\"?><configuration><packageSources><add key=\"GitHub\" value=\"https://nuget.pkg.github.com/estafette/estafette-ci-contracts-csharp/index.json\" /></packageSources><packageSourceCredentials><GitHub><add key=\"Username\" value=\"${GH_USERNAME}\" /><add key=\"ClearTextPassword\" value=\"${GH_TOKEN}\" /></GitHub></packageSourceCredentials></configuration>" > nuget.config
+    - echo "<?xml version=\"1.0\" encoding=\"utf-8\"?><configuration><packageSources><add key=\"GitHub\" value=\"https://nuget.pkg.github.com/estafette/index.json\" /></packageSources><packageSourceCredentials><GitHub><add key=\"Username\" value=\"${GH_USERNAME}\" /><add key=\"ClearTextPassword\" value=\"${GH_TOKEN}\" /></GitHub></packageSourceCredentials></configuration>" > nuget.config
     - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
     - dotnet nuget push **/*.nupkg --source "GitHub"
 
