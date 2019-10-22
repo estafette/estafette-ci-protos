@@ -105,7 +105,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
@@ -120,7 +120,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
@@ -135,7 +135,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
@@ -150,7 +150,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
@@ -165,7 +165,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
@@ -180,7 +180,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
@@ -195,7 +195,7 @@ stages:
     - git add --all
     - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
     - git push origin master
-    - git tag v${ESTAFETTE_BUILD_VERSION}
+    - git tag --force v${ESTAFETTE_BUILD_VERSION}
     - git push --force origin v${ESTAFETTE_BUILD_VERSION}
     when:
       status == 'succeeded' &&
