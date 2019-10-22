@@ -25,7 +25,8 @@ stages:
     - mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
     - chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
     - chown root:root /etc/apt/sources.list.d/microsoft-prod.list
-    - apt install nuget
+    - apt-get update
+    - apt-get install nuget
 
   prototool-lint:
     image: uber/prototool:1.8.1
