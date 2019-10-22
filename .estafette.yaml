@@ -16,6 +16,17 @@ stages:
     image: extensions/git-clone:dev
     shallow: false
 
+  install-nuget:
+    image: mcr.microsoft.com/dotnet/core/sdk:3.0
+    commands:
+    - wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+    - mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+    - wget -q https://packages.microsoft.com/config/debian/10/prod.list
+    - mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+    - chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+    - chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+    - apt install nuget
+
   prototool-lint:
     image: uber/prototool:1.8.1
     commands:
@@ -219,7 +230,13 @@ stages:
       GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
-    - apt-get install nuget
+    - wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+    - mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+    - wget -q https://packages.microsoft.com/config/debian/10/prod.list
+    - mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+    - chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+    - chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+    - apt install nuget
     - cd generated/csharp
     - nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/estafette/estafette-ci-contracts-csharp/index.json" -UserName ${GH_USERNAME} -Password ${GH_TOKEN}
     - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
