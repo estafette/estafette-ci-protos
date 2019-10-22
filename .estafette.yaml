@@ -214,9 +214,9 @@ stages:
     - mvn -B deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java
 
   create-and-push-nuget-package:
-    image: mcr.microsoft.com/dotnet/core/sdk:3.0
+    image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
     env:
-      GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
+      GH_USERNAME: estafette.secret(bh3seruHe6AVoqkx.lqvsI6Bv5Xa539D4_ZCL5xB3l9VC5U-JcO7HwpuP)
       GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
     commands:
     - cd generated/csharp
