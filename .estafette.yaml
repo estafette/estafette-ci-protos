@@ -97,7 +97,8 @@ stages:
 
   git-push-and-tag-language-repos:
     when:
-      status == 'succeeded' && branch == 'master'
+      status == 'succeeded' && 
+      branch == 'master'
     parallelStages:
       git-push-and-tag-golang:
         image: golang:1.13.1-alpine3.10
