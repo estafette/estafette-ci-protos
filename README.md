@@ -1,6 +1,6 @@
-# ESTAFETTE-CI-API-CONTRACTS-PROTO
+# ESTAFETTE-CI-PROTOS
 
-This mono-repository contains all contracts used by the Estafette CI platform in proto3 format.
+This mono-repository contains all messages used by the Estafette CI platform in proto3 format.
 
 ## Adding or extending messages
 
@@ -37,10 +37,10 @@ Once a PR is merged to the `master` branch files for the following languages wil
 
 | Language    | Repository                                                                                                       |
 | ----------- | ---------------------------------------------------------------------------------------------------------------- |
-| Golang      | [github.com/estafette/estafette-ci-contracts-golang](https://github.com/estafette/estafette-ci-contracts-golang) |
-| Java        | [github.com/estafette/estafette-ci-contracts-java](https://github.com/estafette/estafette-ci-contracts-java)     |
-| CSharp      | [github.com/estafette/estafette-ci-contracts-csharp](https://github.com/estafette/estafette-ci-contracts-csharp) |
-| Python      | [github.com/estafette/estafette-ci-contracts-python](https://github.com/estafette/estafette-ci-contracts-python) |
-| C++         | [github.com/estafette/estafette-ci-contracts-cpp](https://github.com/estafette/estafette-ci-contracts-cpp)       |
-| Ruby        | [github.com/estafette/estafette-ci-contracts-ruby](https://github.com/estafette/estafette-ci-contracts-ruby)     |
-| Objective-C | [github.com/estafette/estafette-ci-contracts-objc](https://github.com/estafette/estafette-ci-contracts-objc)     |
+| Golang      | [github.com/estafette/estafette-ci-protos-golang](https://github.com/estafette/estafette-ci-protos-golang) |
+| Java        | [github.com/estafette/estafette-ci-protos-java](https://github.com/estafette/estafette-ci-protos-java)     |
+| CSharp      | [github.com/estafette/estafette-ci-protos-csharp](https://github.com/estafette/estafette-ci-protos-csharp) |
+| Python      | [github.com/estafette/estafette-ci-protos-python](https://github.com/estafette/estafette-ci-protos-python) |
+| C++         | [github.com/estafette/estafette-ci-protos-cpp](https://github.com/estafette/estafette-ci-protos-cpp)       |
+| Ruby        | [github.com/estafette/estafette-ci-protos-ruby](https://github.com/estafette/estafette-ci-protos-ruby)     |
+| Objective-C | [github.com/estafette/estafette-ci-protos-objc](https://github.com/estafette/estafette-ci-protos-objc)     |

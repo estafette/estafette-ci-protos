@@ -27,7 +27,7 @@ lint:
 
 generate:
   go_options:
-    import_path: github.com/estafette/estafette/ci-contracts-proto
+    import_path: github.com/estafette/estafette/ci-protos-proto
   plugins:
   - name: go
     flags: plugins=grpc

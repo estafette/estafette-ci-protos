@@ -36,43 +36,43 @@ stages:
     parallelStages:
       clone-golang:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-golang
+        repo: estafette-ci-protos-golang
         branch: master
-        subdir: generated/golang/github.com/estafette/estafette-ci-contracts-golang
+        subdir: generated/golang/github.com/estafette/estafette-ci-protos-golang
 
       clone-java:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-java
+        repo: estafette-ci-protos-java
         branch: master
         subdir: generated/java
 
       clone-csharp:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-csharp
+        repo: estafette-ci-protos-csharp
         branch: master
         subdir: generated/csharp
 
       clone-python:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-python
+        repo: estafette-ci-protos-python
         branch: master
         subdir: generated/python
 
       clone-cpp:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-cpp
+        repo: estafette-ci-protos-cpp
         branch: master
         subdir: generated/cpp
 
       clone-ruby:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-ruby
+        repo: estafette-ci-protos-ruby
         branch: master
         subdir: generated/ruby
 
       clone-objc:
         image: extensions/git-clone:dev
-        repo: estafette-ci-contracts-objc
+        repo: estafette-ci-protos-objc
         branch: master
         subdir: generated/objc
 
@@ -104,7 +104,7 @@ stages:
         image: golang:1.13.1-alpine3.10
         commands:
         - apk add git
-        - cd generated/golang/github.com/estafette/estafette-ci-contracts-golang
+        - cd generated/golang/github.com/estafette/estafette-ci-protos-golang
         - go mod tidy
         - go test ./...
         - git config --global user.email "bot@estafette.io"
@@ -197,7 +197,7 @@ stages:
     - echo "<settings><servers><server><id>github</id><username>${GH_USERNAME}</username><password>${GH_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
     - cd generated/java
     - mvn -B versions:set -DnewVersion=${ESTAFETTE_BUILD_VERSION}
-    - mvn -B deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/estafette/estafette-ci-contracts-java
+    - mvn -B deploy -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/estafette/estafette-ci-protos-java
 
   # create-and-push-nuget-package:
   #   image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
