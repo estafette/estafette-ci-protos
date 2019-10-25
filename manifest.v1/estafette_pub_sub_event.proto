@@ -4,7 +4,7 @@ package manifest.v1;
 
 option csharp_namespace = "Estafette.CI.Manifest.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
-option java_package = "io.estafette.ci.manifest.v1";
+option java_package = "io.estafette.ci.protos.manifest.v1";
 
 message EstafettePubSubEvent {
   string project = 1;

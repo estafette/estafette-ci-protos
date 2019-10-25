@@ -4,7 +4,7 @@ package contracts.v1;
 
 option csharp_namespace = "Estafette.CI.Contracts.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts_v1";
-option java_package = "io.estafette.ci.contracts.v1";
+option java_package = "io.estafette.ci.protos.contracts.v1";
 
 message Warning {
   string status = 1;
