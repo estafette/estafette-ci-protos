@@ -45,3 +45,5 @@ generate:
     output: ./generated/ruby
   - name: objc
     output: ./generated/objc
+  - name: js
+    output: ./generated/js

@@ -35,8 +35,8 @@ prototool format -w
 
 Once a PR is merged to the `master` branch files for the following languages will be generated and tagged with the same version as this build.
 
-| Language    | Repository                                                                                                       |
-| ----------- | ---------------------------------------------------------------------------------------------------------------- |
+| Language    | Repository                                                                                                 |
+| ----------- | ---------------------------------------------------------------------------------------------------------- |
 | Golang      | [github.com/estafette/estafette-ci-protos-golang](https://github.com/estafette/estafette-ci-protos-golang) |
 | Java        | [github.com/estafette/estafette-ci-protos-java](https://github.com/estafette/estafette-ci-protos-java)     |
 | CSharp      | [github.com/estafette/estafette-ci-protos-csharp](https://github.com/estafette/estafette-ci-protos-csharp) |
@@ -44,3 +44,4 @@ Once a PR is merged to the `master` branch files for the following languages wil
 | C++         | [github.com/estafette/estafette-ci-protos-cpp](https://github.com/estafette/estafette-ci-protos-cpp)       |
 | Ruby        | [github.com/estafette/estafette-ci-protos-ruby](https://github.com/estafette/estafette-ci-protos-ruby)     |
 | Objective-C | [github.com/estafette/estafette-ci-protos-objc](https://github.com/estafette/estafette-ci-protos-objc)     |
+| Javascript  | [github.com/estafette/estafette-ci-protos-js](https://github.com/estafette/estafette-ci-protos-js)         |
