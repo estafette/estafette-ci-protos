@@ -8,7 +8,7 @@ option java_package = "io.estafette.ci.protos.contracts.v1";
 
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "manifest.v1/estafette_event.proto";
+import "protos/manifest.v1/estafette_event.proto";
 
 message Release {
   string name = 1;

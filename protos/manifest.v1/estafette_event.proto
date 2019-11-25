@@ -6,13 +6,13 @@ option csharp_namespace = "Estafette.CI.Manifest.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
 option java_package = "io.estafette.ci.protos.manifest.v1";
 
-import "manifest.v1/estafette_cron_event.proto";
-import "manifest.v1/estafette_docker_event.proto";
-import "manifest.v1/estafette_git_event.proto";
-import "manifest.v1/estafette_manual_event.proto";
-import "manifest.v1/estafette_pipeline_event.proto";
-import "manifest.v1/estafette_pub_sub_event.proto";
-import "manifest.v1/estafette_release_event.proto";
+import "protos/manifest.v1/estafette_cron_event.proto";
+import "protos/manifest.v1/estafette_docker_event.proto";
+import "protos/manifest.v1/estafette_git_event.proto";
+import "protos/manifest.v1/estafette_manual_event.proto";
+import "protos/manifest.v1/estafette_pipeline_event.proto";
+import "protos/manifest.v1/estafette_pub_sub_event.proto";
+import "protos/manifest.v1/estafette_release_event.proto";
 
 message EstafetteEvent {
   EstafettePipelineEvent pipeline = 1;

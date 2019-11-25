@@ -6,13 +6,13 @@ option csharp_namespace = "Estafette.CI.Contracts.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts_v1";
 option java_package = "io.estafette.ci.protos.contracts.v1";
 
-import "contracts.v1/git_commit.proto";
-import "contracts.v1/label.proto";
-import "contracts.v1/release_target.proto";
+import "protos/contracts.v1/git_commit.proto";
+import "protos/contracts.v1/label.proto";
+import "protos/contracts.v1/release_target.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "manifest.v1/estafette_event.proto";
-import "manifest.v1/estafette_trigger.proto";
+import "protos/manifest.v1/estafette_event.proto";
+import "protos/manifest.v1/estafette_trigger.proto";
 
 message Build {
   string id = 1;
