@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Authors>Estafette</Authors>
+    <Description>This contains Estafette CI contracts, automatically compiled from protobuf files</Description>
+    <PackageProjectUrl>https://github.com/estafette/estafette-ci-protos</PackageProjectUrl>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.6.1" />
+  </ItemGroup>
+</Project>
