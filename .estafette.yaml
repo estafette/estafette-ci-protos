@@ -85,7 +85,6 @@ stages:
   remove-previous-generated-files:
     image: uber/prototool:1.8.1
     shell: /bin/bash
-    runCommandsInForeground: true
     commands:
     - shopt -s extglob
     - shopt -u dotglob
@@ -251,7 +250,6 @@ stages:
       create-and-push-maven-package:
         image: maven:3.6.2-jdk-11-slim
         shell: /bin/bash
-        runCommandsInForeground: true
         env:
           GH_USERNAME: estafette.secret(bh3seruHe6AVoqkx.lqvsI6Bv5Xa539D4_ZCL5xB3l9VC5U-JcO7HwpuP)
           GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
@@ -267,7 +265,6 @@ stages:
         env:
           GH_USERNAME: estafette.secret(AnS3CfclpD5cJapI.pAoBajH2I8-FLwjYN-KJCv5kVB1Gpn6Wig==)
           GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
-        runCommandsInForeground: true
         commands:
         - apk add curl
         - cd generated/csharp
