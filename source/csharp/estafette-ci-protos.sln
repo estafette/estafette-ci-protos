@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estafette.CI", "src\Estafette.CI.csproj", "{857BA3BC-F4E1-480D-9723-0CA1950A878C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estafette.CI", "src\estafette-ci-protos.csproj", "{857BA3BC-F4E1-480D-9723-0CA1950A878C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
