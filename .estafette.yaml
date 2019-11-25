@@ -246,7 +246,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
   push-packages-to-repos:
-    when: status == 'succeeded' && branch == 'master'
+    # when: status == 'succeeded' && branch == 'master'
     parallelStages:
       create-and-push-maven-package:
         image: maven:3.6.2-jdk-11-slim
