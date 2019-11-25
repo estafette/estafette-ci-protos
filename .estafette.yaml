@@ -134,7 +134,6 @@ stages:
 
       compile-csharp:
         image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
-        shell: /bin/bash
         commands:
         - cd generated/csharp
         - dotnet test --configuration Release
