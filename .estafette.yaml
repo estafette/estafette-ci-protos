@@ -98,19 +98,19 @@ stages:
     - rm -rfv generated/cpp/!(".git")
     - rm -rfv generated/js/!(".git")
 
-  copy-resources-files:
+  copy-source-files:
     image: uber/prototool:1.8.1
     shell: /bin/bash
     commands:
     - shopt -u dotglob
-    - cp -rv resources/golang/. generated/golang/github.com/estafette/estafette-ci-protos-golang
-    - cp -rv resources/java/. generated/java
-    - cp -rv resources/csharp/. generated/csharp
-    - cp -rv resources/python/. generated/python
-    - cp -rv resources/ruby/. generated/ruby
-    - cp -rv resources/objc/. generated/objc
-    - cp -rv resources/cpp/. generated/cpp
-    - cp -rv resources/js/. generated/js
+    - cp -rv source/golang/. generated/golang/github.com/estafette/estafette-ci-protos-golang
+    - cp -rv source/java/. generated/java
+    - cp -rv source/csharp/. generated/csharp
+    - cp -rv source/python/. generated/python
+    - cp -rv source/ruby/. generated/ruby
+    - cp -rv source/objc/. generated/objc
+    - cp -rv source/cpp/. generated/cpp
+    - cp -rv source/js/. generated/js
 
   prototool-generate:
     image: uber/prototool:1.8.1
