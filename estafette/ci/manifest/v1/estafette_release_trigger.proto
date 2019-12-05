@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package estafette.ci.manifest.v1;
+
+option csharp_namespace = "Estafette.Ci.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.manifest.v1";
+
+message EstafetteReleaseTrigger {
+  string event = 1;
+  string status = 2;
+  string name = 3;
+  string target = 4;
+}

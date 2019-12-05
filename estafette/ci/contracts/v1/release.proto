@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package estafette.ci.contracts.v1;
+
+option csharp_namespace = "Estafette.Ci.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts/v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.contracts.v1";
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "estafette/ci/manifest/v1/estafette_event.proto";
+
+message Release {
+  string name = 1;
+  string action = 2;
+  string id = 3;
+  string repo_source = 4;
+  string repo_owner = 5;
+  string release_version = 6;
+  string release_status = 7;
+  repeated manifest.v1.EstafetteEvent events = 8;
+  google.protobuf.Timestamp inserted_at_time = 9;
+  google.protobuf.Timestamp updated_at_time = 10;
+  google.protobuf.Duration duration = 11;
+}

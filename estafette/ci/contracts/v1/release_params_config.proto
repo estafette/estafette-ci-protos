@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package estafette.ci.contracts.v1;
+
+option csharp_namespace = "Estafette.Ci.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts/v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.contracts.v1";
+
+message ReleaseParamsConfig {
+  string release_name = 1;
+  int64 release_id = 2;
+  string release_action = 3;
+  string triggered_by = 4;
+}

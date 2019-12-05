@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package estafette.ci.contracts.v1;
+
+option csharp_namespace = "Estafette.Ci.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts/v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.contracts.v1";
+
+message GitConfig {
+  string repo_source = 1;
+  string repo_owner = 2;
+  string repo_name = 3;
+  string repo_branch = 4;
+  string repo_revision = 5;
+}

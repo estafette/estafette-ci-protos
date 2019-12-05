@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package estafette.ci.manifest.v1;
+
+option csharp_namespace = "Estafette.Ci.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.manifest.v1";
+
+import "estafette/ci/manifest/v1/string_or_string_array.proto";
+
+message EstafetteSemverVersion {
+  int64 major = 1;
+  int64 minor = 2;
+  string patch = 3;
+  string label_template = 4;
+  StringOrStringArray release_branch = 5;
+}

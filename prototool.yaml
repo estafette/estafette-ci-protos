@@ -2,28 +2,14 @@ protoc:
   version: 3.10.1
 
 lint:
-  group: google
+  group: uber2
   rules:
-    # view available lint rules with `prototool lint --list-linters`
-    add:
-    - ENUM_NAMES_CAMEL_CASE
-    - ENUM_NAMES_CAPITALIZED
-    - PACKAGES_SAME_IN_DIR
-    - PACKAGE_IS_DECLARED
-    - PACKAGE_LOWER_CASE
-    - PACKAGE_MAJOR_BETA_VERSIONED
-    - PACKAGE_NO_KEYWORDS
-    - FILE_NAMES_LOWER_SNAKE_CASE
-    - FILE_OPTIONS_CSHARP_NAMESPACE_SAME_IN_DIR
-    - FILE_OPTIONS_GO_PACKAGE_SAME_IN_DIR
-    - FILE_OPTIONS_JAVA_PACKAGE_SAME_IN_DIR
-    - FILE_OPTIONS_REQUIRE_CSHARP_NAMESPACE
-    - FILE_OPTIONS_REQUIRE_GO_PACKAGE
-    - FILE_OPTIONS_REQUIRE_JAVA_PACKAGE
-    - MESSAGE_FIELD_NAMES_LOWER_SNAKE_CASE
-    - MESSAGE_NAMES_CAMEL_CASE
-    - MESSAGE_NAMES_CAPITALIZED
-    - SYNTAX_PROTO3
+    remove:
+    - FILE_OPTIONS_EQUAL_GO_PACKAGE_V2_SUFFIX
+    - FILE_OPTIONS_REQUIRE_OBJC_CLASS_PREFIX
+    - MESSAGES_HAVE_SENTENCE_COMMENTS_EXCEPT_REQUEST_RESPONSE_TYPES
+    - FILE_OPTIONS_REQUIRE_JAVA_OUTER_CLASSNAME
+    - FILE_OPTIONS_REQUIRE_PHP_NAMESPACE
 
 generate:
   go_options:
@@ -36,7 +22,7 @@ generate:
     output: ./generated/java/src
   - name: csharp
     output: ./generated/csharp/src
-    flags: base_namespace=Estafette.CI
+    flags: base_namespace=Estafette.Ci
   - name: python
     output: ./generated/python
   - name: cpp
