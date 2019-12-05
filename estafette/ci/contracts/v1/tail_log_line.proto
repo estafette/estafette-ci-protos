@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package estafette.ci.contracts.v1;
+
+option csharp_namespace = "Estafette.Ci.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts/v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.contracts.v1";
+
+import "estafette/ci/contracts/v1/build_log_line.proto";
+import "estafette/ci/contracts/v1/build_log_step_docker_image.proto";
+import "google/protobuf/duration.proto";
+
+message TailLogLine {
+  string step = 1;
+  BuildLogLine log_line = 2;
+  BuildLogStepDockerImage image = 3;
+  google.protobuf.Duration duration = 4;
+  int64 exit_code = 5;
+  string status = 6;
+  bool auto_injected = 7;
+}

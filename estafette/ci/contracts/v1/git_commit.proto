@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package estafette.ci.contracts.v1;
+
+option csharp_namespace = "Estafette.Ci.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts/v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.contracts.v1";
+
+import "estafette/ci/contracts/v1/git_author.proto";
+
+message GitCommit {
+  string message = 1;
+  GitAuthor author = 2;
+}

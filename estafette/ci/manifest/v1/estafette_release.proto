@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package estafette.ci.manifest.v1;
+
+option csharp_namespace = "Estafette.Ci.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.manifest.v1";
+
+import "estafette/ci/manifest/v1/estafette_release_action.proto";
+import "estafette/ci/manifest/v1/estafette_stage.proto";
+import "estafette/ci/manifest/v1/estafette_trigger.proto";
+
+message EstafetteRelease {
+  string name = 1;
+  bool clone_repository = 2;
+  repeated EstafetteReleaseAction actions = 3;
+  repeated EstafetteTrigger triggers = 4;
+  repeated EstafetteStage stages = 5;
+}

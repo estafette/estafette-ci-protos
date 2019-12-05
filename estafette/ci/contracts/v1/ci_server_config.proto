@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package estafette.ci.contracts.v1;
+
+option csharp_namespace = "Estafette.Ci.Contracts.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts/v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.contracts.v1";
+
+message CiServerConfig {
+  string base_url = 1;
+  string builder_events_url = 2;
+  string post_logs_url = 3;
+  string api_key = 4;
+}

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package estafette.ci.manifest.v1;
+
+option csharp_namespace = "Estafette.Ci.Manifest.V1";
+option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
+option java_multiple_files = true;
+option java_package = "com.estafette.ci.manifest.v1";
+
+import "estafette/ci/manifest/v1/estafette_cron_event.proto";
+import "estafette/ci/manifest/v1/estafette_docker_event.proto";
+import "estafette/ci/manifest/v1/estafette_git_event.proto";
+import "estafette/ci/manifest/v1/estafette_manual_event.proto";
+import "estafette/ci/manifest/v1/estafette_pipeline_event.proto";
+import "estafette/ci/manifest/v1/estafette_pub_sub_event.proto";
+import "estafette/ci/manifest/v1/estafette_release_event.proto";
+
+message EstafetteEvent {
+  EstafettePipelineEvent pipeline = 1;
+  EstafetteReleaseEvent release = 2;
+  EstafetteGitEvent git = 3;
+  EstafetteDockerEvent docker = 4;
+  EstafetteCronEvent cron = 5;
+  EstafettePubSubEvent pub_sub = 6;
+  EstafetteManualEvent manual = 7;
+}
