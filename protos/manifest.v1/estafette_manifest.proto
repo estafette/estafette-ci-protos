@@ -6,11 +6,11 @@ option csharp_namespace = "Estafette.CI.Manifest.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/manifest_v1";
 option java_package = "io.estafette.ci.protos.manifest.v1";
 
-import "manifest.v1/estafette_builder.proto";
-import "manifest.v1/estafette_release.proto";
-import "manifest.v1/estafette_stage.proto";
-import "manifest.v1/estafette_trigger.proto";
-import "manifest.v1/estafette_version.proto";
+import "protos/manifest.v1/estafette_builder.proto";
+import "protos/manifest.v1/estafette_release.proto";
+import "protos/manifest.v1/estafette_stage.proto";
+import "protos/manifest.v1/estafette_trigger.proto";
+import "protos/manifest.v1/estafette_version.proto";
 
 message EstafetteManifest {
   EstafetteBuilder builder = 1;

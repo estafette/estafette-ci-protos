@@ -6,15 +6,15 @@ option csharp_namespace = "Estafette.CI.Contracts.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts_v1";
 option java_package = "io.estafette.ci.protos.contracts.v1";
 
-import "contracts.v1/build_params_config.proto";
-import "contracts.v1/build_version_config.proto";
-import "contracts.v1/ci_server_config.proto";
-import "contracts.v1/credential_config.proto";
-import "contracts.v1/git_config.proto";
-import "contracts.v1/release_params_config.proto";
-import "contracts.v1/trusted_image_config.proto";
-import "manifest.v1/estafette_event.proto";
-import "manifest.v1/estafette_manifest.proto";
+import "protos/contracts.v1/build_params_config.proto";
+import "protos/contracts.v1/build_version_config.proto";
+import "protos/contracts.v1/ci_server_config.proto";
+import "protos/contracts.v1/credential_config.proto";
+import "protos/contracts.v1/git_config.proto";
+import "protos/contracts.v1/release_params_config.proto";
+import "protos/contracts.v1/trusted_image_config.proto";
+import "protos/manifest.v1/estafette_event.proto";
+import "protos/manifest.v1/estafette_manifest.proto";
 
 message BuilderConfig {
   string action = 1;

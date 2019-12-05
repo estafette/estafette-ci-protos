@@ -86,21 +86,62 @@ stages:
     image: uber/prototool:1.8.1
     shell: /bin/bash
     commands:
-    - shopt -s globstar
-    - rm -rf generated/**/*.go || true
-    - rm -rf generated/**/*.java || true
-    - rm -rf generated/**/*.cs || true
-    - rm -rf generated/**/*.py || true
-    - rm -rf generated/**/*.cc || true
-    - rm -rf generated/**/*.h || true
-    - rm -rf generated/**/*.m || true
-    - rm -rf generated/**/*.rb || true
-    - rm -rf generated/**/*.js || true
+    - shopt -s extglob
+    - shopt -u dotglob
+    - rm -rfv generated/golang/github.com/estafette/estafette-ci-protos-golang/!(".git")
+    - rm -rfv generated/java/!(".git")
+    - rm -rfv generated/csharp/!(".git")
+    - rm -rfv generated/python/!(".git")
+    - rm -rfv generated/ruby/!(".git")
+    - rm -rfv generated/objc/!(".git")
+    - rm -rfv generated/cpp/!(".git")
+    - rm -rfv generated/js/!(".git")
+
+  copy-source-files:
+    image: uber/prototool:1.8.1
+    shell: /bin/bash
+    commands:
+    - shopt -u dotglob
+    - cp -rv source/golang/. generated/golang/github.com/estafette/estafette-ci-protos-golang
+    - cp -rv source/java/. generated/java
+    - cp -rv source/csharp/. generated/csharp
+    - cp -rv source/python/. generated/python
+    - cp -rv source/ruby/. generated/ruby
+    - cp -rv source/objc/. generated/objc
+    - cp -rv source/cpp/. generated/cpp
+    - cp -rv source/js/. generated/js
 
   prototool-generate:
     image: uber/prototool:1.8.1
     commands:
     - prototool generate
+
+  compile-language-repos:
+    parallelStages:
+      compile-golang:
+        image: golang:1.13.4-alpine3.10
+        commands:
+        - cd generated/golang/github.com/estafette/estafette-ci-protos-golang
+        - go test ./...
+
+      compile-java:
+        image: maven:3.6.2-jdk-11-slim
+        shell: /bin/bash
+        commands:
+        - cd generated/java
+        - mvn -B verify
+
+      compile-csharp:
+        image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
+        commands:
+        - cd generated/csharp
+        - dotnet test --configuration Release
+
+      compile-python:
+        image: python:3.8.0-alpine3.10
+        commands:
+        - cd generated/python
+        - python -m compileall
 
   git-push-and-tag-language-repos:
     when:
@@ -108,14 +149,11 @@ stages:
       branch == 'master'
     parallelStages:
       git-push-and-tag-golang:
-        image: golang:1.13.1-alpine3.10
+        image: uber/prototool:1.8.1
         commands:
-        - apk add git
         - cd generated/golang/github.com/estafette/estafette-ci-protos-golang
-        - go mod tidy
-        - go test ./...
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -126,8 +164,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/java
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -138,8 +176,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/csharp
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -150,8 +188,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/python
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -162,8 +200,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/cpp
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -174,8 +212,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/ruby
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -186,8 +224,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/objc
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -198,8 +236,8 @@ stages:
         image: uber/prototool:1.8.1
         commands:
         - cd generated/js
-        - git config --global user.email "bot@estafette.io"
-        - git config --global user.name "Estafette bot"
+        - git config --global user.email "protos-bot@estafette.io"
+        - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
         - git push origin master
@@ -207,9 +245,11 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
   push-packages-to-repos:
+    # when: status == 'succeeded' && branch == 'master'
     parallelStages:
       create-and-push-maven-package:
         image: maven:3.6.2-jdk-11-slim
+        shell: /bin/bash
         env:
           GH_USERNAME: estafette.secret(bh3seruHe6AVoqkx.lqvsI6Bv5Xa539D4_ZCL5xB3l9VC5U-JcO7HwpuP)
           GH_TOKEN: estafette.secret(Qi5PdAO8CEF2tnKz.n1qyTq164w7SD4ie0sItL_xdZLvIgszXZqXvAOW9D5HLuF9HhVVGneQRHFO_Ywfsq3LCcsghD-g=)
@@ -229,7 +269,7 @@ stages:
         - apk add curl
         - cd generated/csharp
         - dotnet pack --configuration Release -p:PackageVersion=${ESTAFETTE_BUILD_VERSION}
-        - curl -vX PUT -u "${GH_USERNAME}:${GH_TOKEN}" -F package=@bin/Release/estafette-ci-protos.${ESTAFETTE_BUILD_VERSION}.nupkg https://nuget.pkg.github.com/estafette/
+        - curl -vX PUT -u "${GH_USERNAME}:${GH_TOKEN}" -F package=@src/bin/Release/estafette-ci-protos.${ESTAFETTE_BUILD_VERSION}.nupkg https://nuget.pkg.github.com/estafette/
 
   slack-notify:
     image: extensions/slack-build-status:dev

@@ -6,11 +6,9 @@ option csharp_namespace = "Estafette.CI.Contracts.V1";
 option go_package = "github.com/estafette/estafette-ci-protos-golang/contracts_v1";
 option java_package = "io.estafette.ci.protos.contracts.v1";
 
-import "contracts.v1/release.proto";
-import "manifest.v1/estafette_release_action.proto";
+import "protos/contracts.v1/git_author.proto";
 
-message ReleaseTarget {
-  string name = 1;
-  repeated manifest.v1.EstafetteReleaseAction actions = 2;
-  repeated Release active_releases = 3;
+message GitCommit {
+  string message = 1;
+  GitAuthor author = 2;
 }
