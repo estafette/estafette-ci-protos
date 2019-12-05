@@ -33,3 +33,4 @@ generate:
     output: ./generated/objc
   - name: js
     output: ./generated/js
+    flags: library=estafette_ci.js,binary
