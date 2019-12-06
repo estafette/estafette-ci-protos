@@ -1,5 +1,5 @@
 protoc:
-  version: 3.10.1
+  version: 3.11.1
 
 lint:
   group: uber2
@@ -19,7 +19,7 @@ generate:
     flags: plugins=grpc
     output: ./generated/golang
   - name: java
-    output: ./generated/java/src
+    output: ./generated/java/src/main/java
   - name: csharp
     output: ./generated/csharp/src
     flags: base_namespace=Estafette.Ci
