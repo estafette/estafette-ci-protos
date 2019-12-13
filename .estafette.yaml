@@ -119,7 +119,7 @@ stages:
   compile-language-repos:
     parallelStages:
       compile-golang:
-        image: golang:1.13.4-alpine3.10
+        image: golang:1.13.5-alpine3.10
         commands:
         - cd generated/golang/github.com/estafette/estafette-ci-protos-golang
         - go test ./...
