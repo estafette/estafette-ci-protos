@@ -119,26 +119,26 @@ stages:
   compile-language-repos:
     parallelStages:
       compile-golang:
-        image: golang:1.13.5-alpine3.10
+        image: golang:1.13.6-alpine3.11
         commands:
         - cd generated/golang/github.com/estafette/estafette-ci-protos-golang
         - go test ./...
 
       compile-java:
-        image: maven:3.6.2-jdk-11-slim
+        image: maven:3.6.3-jdk-11-slim
         shell: /bin/bash
         commands:
         - cd generated/java
         - mvn -B verify
 
       compile-csharp:
-        image: mcr.microsoft.com/dotnet/core/sdk:3.0-alpine
+        image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
         commands:
         - cd generated/csharp
         - dotnet test --configuration Release
 
       compile-python:
-        image: python:3.8.0-alpine3.10
+        image: python:3.8.1-alpine3.11
         commands:
         - cd generated/python
         - python -m compileall
@@ -248,7 +248,7 @@ stages:
     # when: status == 'succeeded' && branch == 'master'
     parallelStages:
       create-and-push-maven-package:
-        image: maven:3.6.2-jdk-11-slim
+        image: maven:3.6.3-jdk-11-slim
         shell: /bin/bash
         env:
           GH_USERNAME: estafette.secret(bh3seruHe6AVoqkx.lqvsI6Bv5Xa539D4_ZCL5xB3l9VC5U-JcO7HwpuP)
