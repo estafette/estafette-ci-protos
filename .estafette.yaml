@@ -17,17 +17,17 @@ stages:
     shallow: false
 
   prototool-lint:
-    image: uber/prototool:1.8.1
+    image: uber/prototool:1.9.0
     commands:
     - prototool lint
 
   prototool-compile:
-    image: uber/prototool:1.8.1
+    image: uber/prototool:1.9.0
     commands:
     - prototool compile
 
   # prototool-break-check:
-  #   image: uber/prototool:1.8.1
+  #   image: uber/prototool:1.9.0
   #   commands:
   #   - git branch --track master origin/master || true
   #   - prototool break check --git-branch master
@@ -83,7 +83,7 @@ stages:
         subdir: generated/js
 
   remove-previous-generated-files:
-    image: uber/prototool:1.8.1
+    image: uber/prototool:1.9.0
     shell: /bin/bash
     commands:
     - shopt -s extglob
@@ -98,7 +98,7 @@ stages:
     - rm -rfv generated/js/!(".git")
 
   copy-source-files:
-    image: uber/prototool:1.8.1
+    image: uber/prototool:1.9.0
     shell: /bin/bash
     commands:
     - shopt -u dotglob
@@ -112,7 +112,7 @@ stages:
     - cp -rv source/js/. generated/js
 
   prototool-generate:
-    image: uber/prototool:1.8.1
+    image: uber/prototool:1.9.0
     commands:
     - prototool generate
 
@@ -149,7 +149,7 @@ stages:
       branch == 'master'
     parallelStages:
       git-push-and-tag-golang:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/golang/github.com/estafette/estafette-ci-protos-golang
         - git config --global user.email "protos-bot@estafette.io"
@@ -161,7 +161,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-java:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/java
         - git config --global user.email "protos-bot@estafette.io"
@@ -173,7 +173,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-csharp:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/csharp
         - git config --global user.email "protos-bot@estafette.io"
@@ -185,7 +185,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-python:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/python
         - git config --global user.email "protos-bot@estafette.io"
@@ -197,7 +197,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-cpp:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/cpp
         - git config --global user.email "protos-bot@estafette.io"
@@ -209,7 +209,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-ruby:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/ruby
         - git config --global user.email "protos-bot@estafette.io"
@@ -221,7 +221,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-objc:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/objc
         - git config --global user.email "protos-bot@estafette.io"
@@ -233,7 +233,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
       git-push-and-tag-js:
-        image: uber/prototool:1.8.1
+        image: uber/prototool:1.9.0
         commands:
         - cd generated/js
         - git config --global user.email "protos-bot@estafette.io"
