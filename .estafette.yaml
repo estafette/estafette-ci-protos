@@ -29,57 +29,57 @@ stages:
   # prototool-break-check:
   #   image: uber/prototool:1.9.0
   #   commands:
-  #   - git branch --track master origin/master || true
-  #   - prototool break check --git-branch master
+  #   - git branch --track main origin/main || true
+  #   - prototool break check --git-branch main
 
   clone-language-repos:
     parallelStages:
       clone-golang:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-golang
-        branch: master
+        branch: main
         subdir: generated/golang/github.com/estafette/estafette-ci-protos-golang
 
       clone-java:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-java
-        branch: master
+        branch: main
         subdir: generated/java
 
       clone-csharp:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-csharp
-        branch: master
+        branch: main
         subdir: generated/csharp
 
       clone-python:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-python
-        branch: master
+        branch: main
         subdir: generated/python
 
       clone-cpp:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-cpp
-        branch: master
+        branch: main
         subdir: generated/cpp
 
       clone-ruby:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-ruby
-        branch: master
+        branch: main
         subdir: generated/ruby
 
       clone-objc:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-objc
-        branch: master
+        branch: main
         subdir: generated/objc
 
       clone-js:
         image: extensions/git-clone:dev
         repo: estafette-ci-protos-js
-        branch: master
+        branch: main
         subdir: generated/js
 
   remove-previous-generated-files:
@@ -156,7 +156,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -168,7 +168,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -180,7 +180,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -192,7 +192,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -204,7 +204,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -216,7 +216,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -228,7 +228,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
@@ -240,7 +240,7 @@ stages:
         - git config --global user.name "estafette-protos-bot"
         - git add --all
         - git commit --allow-empty -m "v${ESTAFETTE_BUILD_VERSION}"
-        - git push origin master
+        - git push origin main
         - git tag --force v${ESTAFETTE_BUILD_VERSION}
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
