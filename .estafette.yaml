@@ -146,7 +146,7 @@ stages:
   git-push-and-tag-language-repos:
     when:
       status == 'succeeded' && 
-      branch == 'master'
+      branch == 'main'
     parallelStages:
       git-push-and-tag-golang:
         image: uber/prototool:1.9.0
@@ -245,7 +245,7 @@ stages:
         - git push --force origin v${ESTAFETTE_BUILD_VERSION}
 
   push-packages-to-repos:
-    # when: status == 'succeeded' && branch == 'master'
+    # when: status == 'succeeded' && branch == 'main'
     parallelStages:
       create-and-push-maven-package:
         image: maven:3.6.3-jdk-11-slim
