@@ -84,6 +84,7 @@ stages:
 
   remove-previous-generated-files:
     image: uber/prototool:1.9.0
+    shell: /bin/bash
     commands:
     - shopt -s extglob
     - shopt -u dotglob
@@ -98,6 +99,7 @@ stages:
 
   copy-source-files:
     image: uber/prototool:1.9.0
+    shell: /bin/bash
     commands:
     - shopt -u dotglob
     - cp -rv source/golang/. generated/golang/github.com/estafette/estafette-ci-protos-golang
